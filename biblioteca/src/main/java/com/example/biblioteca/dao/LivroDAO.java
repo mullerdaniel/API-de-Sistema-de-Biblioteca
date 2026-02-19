@@ -99,7 +99,33 @@ public class LivroDAO {
         throw new RuntimeException("Livro não encontrado!");
     }
 
+
+
     // ATUALIZAR
+    public Livro atualizarLivro(Livro livro) throws SQLException {
+        String query = """
+                UPDATE livro
+                set titulo = ?,
+                autor = ?,
+                ano_publicacao = ?
+                WHERE
+                id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, livro.getTitulo());
+            stmt.setString(2, livro.getAutor());
+            stmt.setInt(3, livro.getAno_publicacao());
+            stmt.executeUpdate();
+
+        }
+        return livro;
+    }
+
+
+
     // DELETAR
 
 
