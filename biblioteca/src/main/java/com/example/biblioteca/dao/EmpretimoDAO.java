@@ -1,7 +1,6 @@
 package com.example.biblioteca.dao;
 
 import com.example.biblioteca.model.Emprestimo;
-import com.example.biblioteca.model.Livro;
 import com.example.biblioteca.utils.Conexao;
 import org.springframework.stereotype.Repository;
 
