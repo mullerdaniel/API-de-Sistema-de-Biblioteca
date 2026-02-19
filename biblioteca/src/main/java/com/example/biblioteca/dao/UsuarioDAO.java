@@ -5,6 +5,8 @@ import com.example.biblioteca.model.Usuario;
 import com.example.biblioteca.utils.Conexao;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO {
 
@@ -27,5 +29,36 @@ public class UsuarioDAO {
             }
         }
         return usuario;
+    }
+
+
+
+    // BUSCARTODOS
+    public List<Usuario> buscarUsuario() throws SQLException {
+        List<Usuario> listarUsuarios = new ArrayList<>();
+        String query = """
+                SELECT
+                id,
+                nome,
+                email
+                FROM
+                usuario
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+
+                listarUsuarios.add(new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("email")
+                ));
+            }
+        }
+        return listarUsuarios;
     }
 }
