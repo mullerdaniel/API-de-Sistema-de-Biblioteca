@@ -33,6 +33,16 @@ public class UsuarioController {
     }
 
 
+    // METODO GET
+    @GetMapping
+    public List<Usuario> listarUsuario() throws SQLException {
+        try {
+            return usuarioService.listarUsuario();
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
 
 
