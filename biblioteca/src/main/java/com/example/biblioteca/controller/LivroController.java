@@ -2,12 +2,10 @@ package com.example.biblioteca.controller;
 
 import com.example.biblioteca.model.Livro;
 import com.example.biblioteca.service.LivroService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/biblioteca")
@@ -20,12 +18,25 @@ public class LivroController {
     }
 
 
+    // METODO POST
     @PostMapping
     public Livro salvarLivro(
             @RequestBody Livro livro
     ){
         try {
             return livroService.salvarLivro(livro);
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+
+    // METODO GET
+    @GetMapping
+    public List<Livro> listarLivro() throws SQLException {
+        try {
+            return livroService.listarLivro();
 
         }catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
