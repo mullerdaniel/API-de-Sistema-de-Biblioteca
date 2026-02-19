@@ -140,7 +140,4 @@ public class LivroDAO {
             stmt.executeUpdate();
         }
     }
-
-
-
 }
