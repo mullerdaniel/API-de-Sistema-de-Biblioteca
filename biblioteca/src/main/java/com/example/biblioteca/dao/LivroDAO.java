@@ -118,6 +118,7 @@ public class LivroDAO {
             stmt.setString(1, livro.getTitulo());
             stmt.setString(2, livro.getAutor());
             stmt.setInt(3, livro.getAno_publicacao());
+            stmt.setInt(4, livro.getId());
             stmt.executeUpdate();
 
         }
