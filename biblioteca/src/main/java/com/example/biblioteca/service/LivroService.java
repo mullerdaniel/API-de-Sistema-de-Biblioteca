@@ -35,4 +35,10 @@ public class LivroService {
         livroDAO.atualizarLivro(livro);
         return livro;
     }
+
+
+    // BUSCAR POR ID
+    public Livro buscarLivroPorId(int id) throws SQLException {
+        return livroDAO.buscarPorId(id);
+    }
 }
