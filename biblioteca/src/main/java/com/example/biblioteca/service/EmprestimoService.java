@@ -37,6 +37,10 @@ public class EmprestimoService {
     }
 
 
+    // BUSCAR POR ID
+    public Emprestimo buscarEmprestimoPorId(int id) throws SQLException {
+        return empretimoDAO.buscarPorId(id);
+    }
 
 
 
