@@ -41,4 +41,10 @@ public class LivroService {
     public Livro buscarLivroPorId(int id) throws SQLException {
         return livroDAO.buscarPorId(id);
     }
+
+
+    // DELETAR LIVRO
+    public void  deletarLivroPorId(int id) throws SQLException {
+        livroDAO.deletarLivroPorId(id);
+    }
 }
