@@ -6,6 +6,8 @@ import com.example.biblioteca.utils.Conexao;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Repository
@@ -33,6 +35,41 @@ public class EmpretimoDAO {
             }
         }
         return emprestimo;
+    }
+
+
+
+    // BUSCARTODOS
+    public List<Emprestimo> buscarEmprestimo() throws SQLException {
+        List<Emprestimo> listarEmprestimos = new ArrayList<>();
+        String query = """
+                SELECT
+                id,
+                livro_id,
+                usuario_id,
+                data_emprestimo,
+                data_devolucao
+                FROM
+                emprestimo
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+
+                listarEmprestimos.add(new Emprestimo(
+                        rs.getInt("id"),
+                        rs.getInt("livro_id"),
+                        rs.getInt("usuario_id"),
+                        rs.getDate("data_emprestimo"),
+                        rs.getDate("data_devolucao")
+                ));
+            }
+        }
+        return listarEmprestimos;
     }
 
 
