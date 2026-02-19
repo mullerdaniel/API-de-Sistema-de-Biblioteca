@@ -90,4 +90,27 @@ public class UsuarioDAO {
         }
         throw new RuntimeException("Usuario não encontrado!");
     }
+
+
+
+    // ATUALIZAR
+    public Usuario atualizarUsuario(Usuario usuario) throws SQLException {
+        String query = """
+                UPDATE usuario
+                set nome = ?,
+                email = ?
+                WHERE
+                id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getEmail());
+            stmt.executeUpdate();
+
+        }
+        return usuario;
+    }
 }
