@@ -74,4 +74,37 @@ public class EmpretimoDAO {
 
 
 
+    // BUSCARPORID
+    public Emprestimo buscarPorId(int id) throws SQLException {
+        String query = """
+                SELECT id,
+                livro_id,
+                usuario_id,
+                data_emprestimo,
+                data_devolucao
+                FROM emprestimo
+                WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()) {
+                return new Emprestimo(
+                        rs.getInt("id"),
+                        rs.getInt("livro_id"),
+                        rs.getInt("usuario_id"),
+                        rs.getDate("data_emprestimo"),
+                        rs.getDate("data_devolucao")
+                );
+            }
+        }
+        throw new RuntimeException("Emprestimo não encontrado!");
+    }
+
+
+
 }
