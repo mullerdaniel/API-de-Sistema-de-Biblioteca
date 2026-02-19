@@ -23,7 +23,10 @@ public class EmprestimoService {
     }
 
 
-
+    // LISTAR EMPRESTIMOS
+    public List<Emprestimo> listarEmprestimo() throws SQLException {
+        return empretimoDAO.buscarEmprestimo();
+    }
 
 
 
