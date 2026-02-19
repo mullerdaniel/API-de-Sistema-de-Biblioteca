@@ -126,7 +126,20 @@ public class LivroDAO {
 
 
 
-    // DELETAR
+    // DELETARPORID
+    public void deletarLivroPorId(int id) throws SQLException {
+        String query = """
+                DELETE FROM livro
+                WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
 
 
 
