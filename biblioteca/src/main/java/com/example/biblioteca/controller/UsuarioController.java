@@ -71,5 +71,16 @@ public class UsuarioController {
     }
 
 
-
+    // METODO PUT = ATUALIZAR
+    @PutMapping("/{id}")
+    public Usuario atualizarUsuario(
+            @PathVariable int id,
+            @RequestBody Usuario usuario
+    ){
+        try{
+            return usuarioService.atualizarUsuario(usuario, id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
