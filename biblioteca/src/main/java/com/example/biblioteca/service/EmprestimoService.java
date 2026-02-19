@@ -29,7 +29,12 @@ public class EmprestimoService {
     }
 
 
-
+    // ATUALIZAR EMPRESTIMO
+    public Emprestimo atualizarEmprestimo(Emprestimo emprestimo, int id) throws SQLException {
+        emprestimo.setId(id);
+        empretimoDAO.atualizarEmprestimo(emprestimo);
+        return emprestimo;
+    }
 
 
 
