@@ -109,6 +109,7 @@ public class UsuarioDAO {
 
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
+            stmt.setInt(3, usuario.getId());
             stmt.executeUpdate();
 
         }
