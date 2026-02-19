@@ -1,17 +1,17 @@
 package com.example.biblioteca.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Emprestimo {
 
     private int id;
     private int livro_id;
     private int usuario_id;
-    private Date data_emprestimo;
-    private Date data_devolucao;
+    private LocalDate data_emprestimo;
+    private LocalDate data_devolucao;
+    private Livro livro;
 
-
-    public Emprestimo(int id, int livro_id, int usuario_id, Date data_emprestimo, Date data_devolucao) {
+    public Emprestimo(int id, int livro_id, int usuario_id, LocalDate data_emprestimo, LocalDate data_devolucao) {
         this.id = id;
         this.livro_id = livro_id;
         this.usuario_id = usuario_id;
@@ -19,14 +19,31 @@ public class Emprestimo {
         this.data_devolucao = data_devolucao;
     }
 
-    public Emprestimo(int livro_id, int usuario_id, Date data_emprestimo, Date data_devolucao) {
+    public Emprestimo(int livro_id, int usuario_id, LocalDate data_emprestimo, LocalDate data_devolucao) {
         this.livro_id = livro_id;
         this.usuario_id = usuario_id;
         this.data_emprestimo = data_emprestimo;
         this.data_devolucao = data_devolucao;
     }
 
-    public Emprestimo() {
+    public Emprestimo() {}
+
+    public Emprestimo(Livro livro) {
+        this.livro = livro;
+        if (livro != null) {
+            this.livro_id = livro.getId();
+        }
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+        if (livro != null) {
+            this.livro_id = livro.getId();
+        }
     }
 
     public int getId() {
@@ -53,19 +70,19 @@ public class Emprestimo {
         this.usuario_id = usuario_id;
     }
 
-    public Date getData_emprestimo() {
+    public LocalDate getData_emprestimo() {
         return data_emprestimo;
     }
 
-    public void setData_emprestimo(Date data_emprestimo) {
+    public void setData_emprestimo(LocalDate data_emprestimo) {
         this.data_emprestimo = data_emprestimo;
     }
 
-    public Date getData_devolucao() {
+    public LocalDate getData_devolucao() {
         return data_devolucao;
     }
 
-    public void setData_devolucao(Date data_devolucao) {
+    public void setData_devolucao(LocalDate data_devolucao) {
         this.data_devolucao = data_devolucao;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.biblioteca.controller;
 
 import com.example.biblioteca.model.Emprestimo;
-import com.example.biblioteca.model.Usuario;
 import com.example.biblioteca.service.EmprestimoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,38 +18,30 @@ public class EmprestimoController {
     }
 
 
-    // METODO POST
+
     @PostMapping
-    public Emprestimo salvarEmprestimo(
-            @RequestBody Emprestimo emprestimo
-    ){
+    public Emprestimo salvarEmprestimo(@RequestBody Emprestimo emprestimo) {
         try {
             return emprestimoService.salvarEmprestimo(emprestimo);
-
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
 
-    // METODO GET
+
     @GetMapping
-    public List<Emprestimo> listarEmprestimo() throws SQLException {
+    public List<Emprestimo> listarEmprestimo() {
         try {
             return emprestimoService.listarEmprestimo();
-
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
-
-    // METODO GET POR ID
     @GetMapping("/{id}")
-    public Emprestimo listarEmprestimoPorId(
-            @PathVariable int id
-    ){
-        try{
+    public Emprestimo listarEmprestimoPorId(@PathVariable int id) {
+        try {
             return emprestimoService.buscarEmprestimoPorId(id);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
@@ -58,12 +49,10 @@ public class EmprestimoController {
     }
 
 
-    // METODO DELETE
+
     @DeleteMapping("/{id}")
-    public void deletarEmprestimo(
-            @PathVariable int id
-    ){
-        try{
+    public void deletarEmprestimo(@PathVariable int id) {
+        try {
             emprestimoService.deletarEmprestimoPorId(id);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
@@ -71,13 +60,10 @@ public class EmprestimoController {
     }
 
 
-    // METODO PUT = ATUALIZAR
+
     @PutMapping("/{id}")
-    public Emprestimo atualizarEmprestimo(
-            @PathVariable int id,
-            @RequestBody Emprestimo emprestimo
-    ){
-        try{
+    public Emprestimo atualizarEmprestimo(@PathVariable int id, @RequestBody Emprestimo emprestimo) {
+        try {
             return emprestimoService.atualizarEmprestimo(emprestimo, id);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
