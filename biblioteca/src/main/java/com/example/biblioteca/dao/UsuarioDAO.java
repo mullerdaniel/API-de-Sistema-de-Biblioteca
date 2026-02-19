@@ -61,4 +61,33 @@ public class UsuarioDAO {
         }
         return listarUsuarios;
     }
+
+
+
+    // BUSCARPORID
+    public Usuario buscarPorId(int id) throws SQLException {
+        String query = """
+                SELECT id,
+                nome,
+                email
+                FROM usuario
+                WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()) {
+                return new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("email")
+                );
+            }
+        }
+        throw new RuntimeException("Usuario não encontrado!");
+    }
 }
