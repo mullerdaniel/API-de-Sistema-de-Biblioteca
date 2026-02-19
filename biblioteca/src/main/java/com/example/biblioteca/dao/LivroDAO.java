@@ -35,6 +35,8 @@ public class LivroDAO {
         return livro;
     }
 
+
+
     // BUSCARTODOS
     public List<Livro> buscarLivro() throws SQLException {
         List<Livro> listarLivros = new ArrayList<>();
@@ -66,7 +68,37 @@ public class LivroDAO {
         return listarLivros;
     }
 
+
+
     // BUSCARPORID
+    public Livro buscarPorId(int id) throws SQLException {
+        String query = """
+                SELECT id,
+                titulo,
+                autor,
+                ano_publicacao
+                FROM livro
+                WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()) {
+                return new Livro(
+                        rs.getInt("id"),
+                        rs.getString("titulo"),
+                        rs.getString("autor"),
+                        rs.getInt("ano_publicacao")
+                );
+            }
+        }
+        throw new RuntimeException("Livro não encontrado!");
+    }
+
     // ATUALIZAR
     // DELETAR
 
