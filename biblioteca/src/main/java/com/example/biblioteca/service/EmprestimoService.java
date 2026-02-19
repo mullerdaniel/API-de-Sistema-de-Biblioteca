@@ -43,5 +43,8 @@ public class EmprestimoService {
     }
 
 
-
+    // DELETAR EMPRESTIMO
+    public void  deletarEmprestimoPorId(int id) throws SQLException {
+        empretimoDAO.deletarEmprestimoPorId(id);
+    }
 }
