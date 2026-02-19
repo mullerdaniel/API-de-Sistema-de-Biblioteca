@@ -24,7 +24,10 @@ public class UsuarioService {
     }
 
 
-
+    // LISTAR USUARIOS
+    public List<Usuario> listarUsuario() throws SQLException {
+        return usuarioDAO.buscarUsuario();
+    }
 
 
 
