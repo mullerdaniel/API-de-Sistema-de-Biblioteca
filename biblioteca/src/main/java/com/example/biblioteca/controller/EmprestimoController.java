@@ -33,14 +33,54 @@ public class EmprestimoController {
     }
 
 
+    // METODO GET
+    @GetMapping
+    public List<Emprestimo> listarEmprestimo() throws SQLException {
+        try {
+            return emprestimoService.listarEmprestimo();
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
 
+    // METODO GET POR ID
+    @GetMapping("/{id}")
+    public Emprestimo listarEmprestimoPorId(
+            @PathVariable int id
+    ){
+        try{
+            return emprestimoService.buscarEmprestimoPorId(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
 
+    // METODO DELETE
+    @DeleteMapping("/{id}")
+    public void deletarEmprestimo(
+            @PathVariable int id
+    ){
+        try{
+            emprestimoService.deletarEmprestimoPorId(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
 
-
-
-
-
+    // METODO PUT = ATUALIZAR
+    @PutMapping("/{id}")
+    public Emprestimo atualizarEmprestimo(
+            @PathVariable int id,
+            @RequestBody Emprestimo emprestimo
+    ){
+        try{
+            return emprestimoService.atualizarEmprestimo(emprestimo, id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
