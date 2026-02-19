@@ -1,13 +1,14 @@
 package com.example.biblioteca.dao;
 
-import com.example.biblioteca.model.Livro;
 import com.example.biblioteca.model.Usuario;
 import com.example.biblioteca.utils.Conexao;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class UsuarioDAO {
 
     // SALVAR
