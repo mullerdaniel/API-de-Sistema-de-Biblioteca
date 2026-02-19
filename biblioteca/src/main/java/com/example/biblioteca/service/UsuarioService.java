@@ -1,7 +1,6 @@
 package com.example.biblioteca.service;
 
 import com.example.biblioteca.dao.UsuarioDAO;
-import com.example.biblioteca.model.Livro;
 import com.example.biblioteca.model.Usuario;
 import org.springframework.stereotype.Service;
 
