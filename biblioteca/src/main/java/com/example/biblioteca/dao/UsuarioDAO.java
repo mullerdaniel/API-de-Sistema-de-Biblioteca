@@ -113,4 +113,21 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+
+
+
+    // DELETARPORID
+    public void deletarUsuarioPorId(int id) throws SQLException {
+        String query = """
+                DELETE FROM usuario
+                WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
 }
