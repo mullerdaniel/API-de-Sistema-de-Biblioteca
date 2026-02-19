@@ -45,7 +45,17 @@ public class UsuarioController {
     }
 
 
-
+    // METODO GET POR ID
+    @GetMapping("/{id}")
+    public Usuario listarUsuarioPorId(
+            @PathVariable int id
+    ){
+        try{
+            return usuarioService.buscarUsuarioPorId(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
 
 
