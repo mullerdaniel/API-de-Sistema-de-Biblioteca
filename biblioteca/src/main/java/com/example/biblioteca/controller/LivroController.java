@@ -55,4 +55,17 @@ public class LivroController {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+
+    // METODO DELETE
+    @DeleteMapping("/{id}")
+    public void deletarLivro(
+            @PathVariable int id
+    ){
+        try{
+            livroService.deletarLivroPorId(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
