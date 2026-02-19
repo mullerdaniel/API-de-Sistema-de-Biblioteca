@@ -5,6 +5,7 @@ import com.example.biblioteca.model.Livro;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class LivroService {
@@ -19,5 +20,12 @@ public class LivroService {
     // SALVAR LIVRO
     public Livro salvarLivro(Livro livro) throws SQLException {
         return livroDAO.salvarLivro(livro);
+    }
+
+
+
+    // LISTAR LIVROS
+    public List<Livro> listarLivro() throws SQLException {
+        return livroDAO.buscarLivro();
     }
 }
