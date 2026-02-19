@@ -58,7 +58,17 @@ public class UsuarioController {
     }
 
 
-
+    // METODO DELETE
+    @DeleteMapping("/{id}")
+    public void deletarUsuario(
+            @PathVariable int id
+    ){
+        try{
+            usuarioService.deletarUsuarioPorId(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
 
 
