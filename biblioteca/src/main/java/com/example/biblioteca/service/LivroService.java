@@ -23,9 +23,16 @@ public class LivroService {
     }
 
 
-
     // LISTAR LIVROS
     public List<Livro> listarLivro() throws SQLException {
         return livroDAO.buscarLivro();
+    }
+
+
+    // ATUALIZAR LIVRO
+    public Livro atualizarLivro(Livro livro, int id) throws SQLException {
+        livro.setId(id);
+        livroDAO.atualizarLivro(livro);
+        return livro;
     }
 }
