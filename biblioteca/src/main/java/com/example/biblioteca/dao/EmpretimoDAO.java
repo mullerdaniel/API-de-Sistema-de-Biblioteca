@@ -107,4 +107,31 @@ public class EmpretimoDAO {
 
 
 
+    // ATUALIZAR
+    public Emprestimo atualizarEmprestimo(Emprestimo emprestimo) throws SQLException {
+        String query = """
+                UPDATE emprestimo
+                set livro_id = ?,
+                usuario_id = ?,
+                data_emprestimo = ?,
+                data_devolucao = ?
+                WHERE
+                id = ?
+                """;
+
+        try(Connection conn = Conexao.Conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, emprestimo.getLivro_id());
+            stmt.setInt(2, emprestimo.getUsuario_id());
+            stmt.setDate(3, Date.valueOf(emprestimo.getData_emprestimo().toString()));
+            stmt.setDate(4, Date.valueOf(emprestimo.getData_devolucao().toString()));
+            stmt.executeUpdate();
+
+        }
+        return emprestimo;
+    }
+
+
+
 }
