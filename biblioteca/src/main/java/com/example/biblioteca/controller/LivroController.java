@@ -68,4 +68,18 @@ public class LivroController {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+
+    // METODO PUT = ATUALIZAR
+    @PutMapping("/{id}")
+    public Livro atualizarLivro(
+            @PathVariable int id,
+            @RequestBody Livro livro
+    ){
+        try{
+            return livroService.atualizarLivro(livro, id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
