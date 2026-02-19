@@ -38,7 +38,10 @@ public class UsuarioService {
     }
 
 
-
+    // BUSCAR POR ID
+    public Usuario buscarUsuarioPorId(int id) throws SQLException {
+        return usuarioDAO.buscarPorId(id);
+    }
 
 
 
