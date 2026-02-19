@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/biblioteca")
+@RequestMapping("/livro")
 public class LivroController {
 
     private final LivroService livroService;
@@ -39,6 +39,19 @@ public class LivroController {
             return livroService.listarLivro();
 
         }catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+
+    // METODO GET POR ID
+    @GetMapping("/{id}")
+    public Livro listarLivroPorId(
+            @PathVariable int id
+    ){
+        try{
+            return livroService.buscarLivroPorId(id);
+        } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
