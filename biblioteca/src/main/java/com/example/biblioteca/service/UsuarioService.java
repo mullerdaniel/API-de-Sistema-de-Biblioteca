@@ -44,5 +44,8 @@ public class UsuarioService {
     }
 
 
-
+    // DELETAR USUARIO
+    public void  deletarUsuarioPorId(int id) throws SQLException {
+        usuarioDAO.deletarUsuarioPorId(id);
+    }
 }
