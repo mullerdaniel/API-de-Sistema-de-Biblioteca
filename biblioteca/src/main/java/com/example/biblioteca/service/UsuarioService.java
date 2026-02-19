@@ -30,7 +30,12 @@ public class UsuarioService {
     }
 
 
-
+    // ATUALIZAR USUARIO
+    public Usuario atualizarUsuario(Usuario usuario, int id) throws SQLException {
+        usuario.setId(id);
+        usuarioDAO.atualizarUsuario(usuario);
+        return usuario;
+    }
 
 
 
