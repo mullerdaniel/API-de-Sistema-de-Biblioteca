@@ -1,4 +1,8 @@
 package com.example.biblioteca.Dto;
 
-public class UsuarioRespostaDto {
+public record UsuarioRespostaDto (
+        int id,
+        String nome,
+        String email
+){
 }
