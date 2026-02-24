@@ -1,5 +1,7 @@
 package com.example.biblioteca.controller;
 
+import com.example.biblioteca.Dto.LivroRequisicaoDto;
+import com.example.biblioteca.Dto.LivroRespostaDto;
 import com.example.biblioteca.model.Livro;
 import com.example.biblioteca.service.LivroService;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +22,11 @@ public class LivroController {
 
     // METODO POST
     @PostMapping
-    public Livro salvarLivro(
-            @RequestBody Livro livro
+    public LivroRespostaDto salvarLivro(
+            @RequestBody LivroRequisicaoDto livroRequisicaoDto
     ){
         try {
-            return livroService.salvarLivro(livro);
+            return livroService.salvarLivro(livroRequisicaoDto);
 
         }catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
