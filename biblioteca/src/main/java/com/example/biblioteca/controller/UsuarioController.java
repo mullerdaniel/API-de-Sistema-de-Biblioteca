@@ -1,5 +1,7 @@
 package com.example.biblioteca.controller;
 
+import com.example.biblioteca.Dto.UsuarioRequisicaoDto;
+import com.example.biblioteca.Dto.UsuarioRespostaDto;
 import com.example.biblioteca.model.Livro;
 import com.example.biblioteca.model.Usuario;
 import com.example.biblioteca.service.UsuarioService;
@@ -21,11 +23,11 @@ public class UsuarioController {
 
     // METODO POST
     @PostMapping
-    public Usuario salvarUsuario(
-            @RequestBody Usuario usuario
+    public UsuarioRespostaDto salvarUsuario(
+            @RequestBody UsuarioRequisicaoDto usuarioRequisicaoDto
     ){
         try {
-            return usuarioService.salvarUsuario(usuario);
+            return usuarioService.salvarUsuario(usuarioRequisicaoDto);
 
         }catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

@@ -1,6 +1,9 @@
 package com.example.biblioteca.service;
 
+import com.example.biblioteca.Dto.UsuarioRequisicaoDto;
+import com.example.biblioteca.Dto.UsuarioRespostaDto;
 import com.example.biblioteca.dao.UsuarioDAO;
+import com.example.biblioteca.mapper.UsuarioMapper;
 import com.example.biblioteca.model.Usuario;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +15,20 @@ public class UsuarioService {
 
     private final UsuarioDAO usuarioDAO;
 
-    public UsuarioService(UsuarioDAO usuarioDAO) {
+    private final UsuarioMapper usuarioMapper;
+
+    public UsuarioService(UsuarioDAO usuarioDAO, UsuarioMapper usuarioMapper) {
         this.usuarioDAO = usuarioDAO;
+        this.usuarioMapper = usuarioMapper;
     }
 
 
     // SALVAR USUARIO
-    public Usuario salvarUsuario(Usuario usuario) throws SQLException {
-        return usuarioDAO.salvarUsuario(usuario);
+    public UsuarioRespostaDto salvarUsuario(UsuarioRequisicaoDto usuarioRequisicaoDto) throws SQLException {
+        Usuario usuario = usuarioMapper.paraEntidade(usuarioRequisicaoDto);
+        Usuario usuarioSalvo = usuarioDAO.salvarUsuario(usuario);
+        UsuarioRespostaDto usuarioRespostaDto = usuarioMapper.paraRespostaDto(usuarioSalvo)
+        return usuarioRespostaDto;
     }
 
 
