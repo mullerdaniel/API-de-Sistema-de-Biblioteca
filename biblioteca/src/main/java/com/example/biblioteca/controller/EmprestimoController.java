@@ -1,5 +1,7 @@
 package com.example.biblioteca.controller;
 
+import com.example.biblioteca.Dto.EmprestimoRequisicaoDto;
+import com.example.biblioteca.Dto.EmprestimoRespostaDto;
 import com.example.biblioteca.model.Emprestimo;
 import com.example.biblioteca.service.EmprestimoService;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +22,16 @@ public class EmprestimoController {
 
 
     @PostMapping
-    public Emprestimo salvarEmprestimo(@RequestBody Emprestimo emprestimo) {
+    public EmprestimoRespostaDto salvarEmprestimo(
+            @RequestBody EmprestimoRequisicaoDto emprestimoRequisicaoDto
+    ){
         try {
-            return emprestimoService.salvarEmprestimo(emprestimo);
+            return emprestimoService.salvarEmprestimo(emprestimoRequisicaoDto);
+
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
-
 
 
     @GetMapping

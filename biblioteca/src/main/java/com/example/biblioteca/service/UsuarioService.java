@@ -27,7 +27,7 @@ public class UsuarioService {
     public UsuarioRespostaDto salvarUsuario(UsuarioRequisicaoDto usuarioRequisicaoDto) throws SQLException {
         Usuario usuario = usuarioMapper.paraEntidade(usuarioRequisicaoDto);
         Usuario usuarioSalvo = usuarioDAO.salvarUsuario(usuario);
-        UsuarioRespostaDto usuarioRespostaDto = usuarioMapper.paraRespostaDto(usuarioSalvo)
+        UsuarioRespostaDto usuarioRespostaDto = usuarioMapper.paraRespostaDto(usuarioSalvo);
         return usuarioRespostaDto;
     }
 
