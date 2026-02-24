@@ -1,4 +1,9 @@
 package com.example.biblioteca.Dto;
 
-public class LivroRequisicaoDto {
+public record LivroRequisicaoDto (
+    String titulo,
+    String autor,
+    int ano_publicacao
+) {
+
 }
